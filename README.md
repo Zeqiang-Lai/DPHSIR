@@ -16,7 +16,9 @@ Zeqiang Lai, Kaixuan Wei, Ying Fu
 
 ## Getting Started
 
-
+```shell
+python run.py denoise -i [img/dir path] -o 
+```
 
 ## Citation
 
@@ -34,3 +36,7 @@ If you find our work useful for your research, please consider citing our paper 
   publisher={Elsevier}
 }
 ```
+
+## Acknowledgement
+
+- We use some util code from [DPIR](https://github.com/cszn/DPIR).
