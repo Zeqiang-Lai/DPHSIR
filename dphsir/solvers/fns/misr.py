@@ -1,6 +1,6 @@
 import torch
 
-from dphsir.solvers.base import PnPSolver
+from dphsir.solvers.base import PnPSolver, call
 from dphsir.solvers.utils import single2tensor4, tensor2single
 
 
@@ -51,7 +51,7 @@ class ADMMSolver(PnPSolver):
         self.prox_spe = prox_spe
         self.prox_spa = prox_spa
 
-    def restore(self, input, iter_num, rhos, sigmas):
+    def restore(self, input, iter_num, rhos, sigmas, callbacks=None):
         hsi, rgb = input
 
         x = self.init(hsi)
@@ -79,11 +79,14 @@ class ADMMSolver(PnPSolver):
 
             # v update
             vtilde = x + u
-            v = self.denoise(vtilde, sigma)
+            v = self.denoise(vtilde, sigma, iter=i)
 
             # u update
             u = u + x - v
             m = m + x - w
+            
+            context.update({'iter': i, 'total': iter_num})
+            call(callbacks, **context)
 
         x = tensor2single(x.clamp_(0, 1))
         return x

@@ -1,37 +1,45 @@
-from torchlight.metrics import mpsnr
-from dphsir.utils.io import loadmat, show_hsi
-import torch
-from dphsir.denoisers.wrapper import UNetDenoiser
 from functools import partial
 
 import dphsir.solvers.fns.inpaint as task
-from dphsir.solvers.base import ADMMSolver, HQSSolver
+import torch
+from dphsir.degrades.inpaint import FastHyStripe
+from dphsir.denoisers.wrapper import UNetDenoiser
+from dphsir.solvers import callbacks
+from dphsir.solvers.base import ADMMSolver
 from dphsir.solvers.params import admm_log_descent
+from dphsir.utils.io import loadmat
+from torchlight.metrics import mpsnr
 
-path = '/media/exthdd/laizeqiang/lzq/projects/hyper-pnp/DPIR/log/test_inpainting_file/mat/Lehavim_0910-1717.mat'
+path = 'Lehavim_0910-1717.mat'
 data = loadmat(path)
 gt = data['gt']
-low = data['low']
-mask = data['mask'].astype('float')
 
-model_path = '/media/exthdd/laizeqiang/lzq/projects/hyper-pnp/DPIR/model_zoo/unet_qrnn3d.pth'
+degrade = FastHyStripe()
+low, mask = degrade(gt)
+mask = mask.astype('float')
+
 device = torch.device('cuda:0')
+
+model_path = 'unet_qrnn3d.pth'
 denoiser = UNetDenoiser(model_path).to(device)
 
-init = partial(task.init, mask=mask)
+init = partial(task.inits.none, mask=mask)
 prox = task.Prox(mask).to(device)
-denoise = denoiser.denoise
+denoise = denoiser
+solver = ADMMSolver(init, prox, denoise).to(device)
 
+iter_num = 24
 rhos, sigmas = admm_log_descent(sigma=max(0.255/255., 0),
-                                iter_num=24,
+                                iter_num=iter_num,
                                 modelSigma1=5, modelSigma2=4,
                                 w=1,
                                 lam=0.6)
 
-solver = ADMMSolver(init, prox, denoise).to(device)
-pred = solver.restore(low, iter_num=24)
-print(pred.shape)
+pred = solver.restore(low, iter_num=iter_num, rhos=rhos, sigmas=sigmas,
+                      callbacks=[callbacks.ProgressBar(iter_num)])
 
-# %%
+print(pred.shape)
 print(mpsnr(init(low), gt))
 print(mpsnr(pred, gt))
+
+# Expected: 74.88

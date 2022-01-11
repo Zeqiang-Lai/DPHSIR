@@ -1,18 +1,19 @@
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
-from scipy.io import loadmat, savemat
-from imageio import imsave
 
 
-def load_mat(path):
+def loadmat(path):
+    from scipy.io import loadmat
     return loadmat(path)
 
 
-def save_mat(path, obj):
+def savemat(path, obj):
+    from scipy.io import savemat
     savemat(path, obj)
 
 
 def save_img(path, img):
+    from imageio import imsave
     imsave(path, img)
 
 

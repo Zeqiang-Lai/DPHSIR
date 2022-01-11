@@ -181,7 +181,7 @@ class MISREngine(Engine):
         
         img_E = self.solver.restore(img_L, 
                                     img_L_spe,
-                                    T=HSI2RGB().SPE,
+                                    T=HSI2RGB().srf,
                                     sf=degrade.scale_factor(), 
                                     k=degrade.kernel(), 
                                     classical_degradation=degrade.is_classical_downsample(), 

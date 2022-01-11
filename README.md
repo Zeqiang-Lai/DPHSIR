@@ -25,7 +25,7 @@ python run.py denoise -i [img/dir path] -o
 If you find our work useful for your research, please consider citing our paper :)
 
 ```bibtex
-@article{lai2020deep,
+@article{lai2022deep,
   title={Deep Plug-and-Play Prior for Hyperspectral Image Restoration},
   author={Lai, Zeqiang and Wei, Kaixuan and Fu, Ying},
   journal={Neurocomputing},

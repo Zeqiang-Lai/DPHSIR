@@ -1,3 +1,4 @@
+from sys import implementation
 from typing import Callable
 import torch
 import numpy as np
@@ -31,7 +32,8 @@ class PnPSolver:
     def __init__(self,
                  init: Callable[[np.ndarray], np.ndarray],
                  prox: Prox,
-                 denoise: Callable[[torch.Tensor, float, int], torch.Tensor]):
+                 denoise: Callable[[torch.Tensor, float, int], torch.Tensor],
+                 ):
         """ Base class for any plug-and-play solver with only one input and prior. 
 
         Args:
@@ -64,8 +66,19 @@ class PnPSolver:
         return self
 
 
+def call(fns, **context):
+    """ Util function for calling callbacks.
+    """
+    for fn in fns:
+        fn(**context)
+
+
+# ---------------------------------------------------------------------------- #
+#                        Specific Solver Implementation                        #
+# ---------------------------------------------------------------------------- #
+
 class HQSSolver(PnPSolver):
-    def restore(self, img_L, iter_num, rhos, sigmas):
+    def restore(self, img_L, iter_num, rhos, sigmas, callbacks=None):
         x = self.init(img_L)
         self.prox.prepare(img_L, x)
 
@@ -77,14 +90,17 @@ class HQSSolver(PnPSolver):
             sigma = sigmas(i, **context)
 
             x = self.prox.solve(x, rho)
-            x = self.denoise(x, sigma, i)
+            x = self.denoise(x, sigma, iter=i)
+
+            context.update({'iter': i, 'total': iter_num})
+            call(callbacks, **context)
 
         x = tensor2single(x)
         return x
 
 
 class ADMMSolver(PnPSolver):
-    def restore(self, img_L, iter_num, rhos, sigmas):
+    def restore(self, img_L, iter_num, rhos, sigmas, callbacks=None):
         x = self.init(img_L)
         self.prox.prepare(img_L, x)
 
@@ -107,6 +123,9 @@ class ADMMSolver(PnPSolver):
 
             # u update
             u = u + x - v
+
+            context.update({'iter': i, 'total': iter_num})
+            call(callbacks, **context)
 
         x = tensor2single(x)
         return x

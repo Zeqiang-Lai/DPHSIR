@@ -75,4 +75,6 @@ def Interpolation_OLRT_3D(img, mask):
     return r
 
 
-init = Interpolation_OLRT_3D
+class inits:
+    interpolate = Interpolation_OLRT_3D
+    none = lambda x, mask: x
