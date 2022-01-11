@@ -1,15 +1,12 @@
-import matplotlib.animation as animation
-import matplotlib.pyplot as plt
+import scipy.io as sio
 
 
 def loadmat(path):
-    from scipy.io import loadmat
-    return loadmat(path)
+    return sio.loadmat(path)
 
 
 def savemat(path, obj):
-    from scipy.io import savemat
-    savemat(path, obj)
+    sio.savemat(path, obj)
 
 
 def save_img(path, img):
@@ -18,6 +15,8 @@ def save_img(path, img):
 
 
 def save_ani(img_list, filename='a.gif', fps=60):
+    import matplotlib.pyplot as plt
+    import matplotlib.animation as animation
     def animation_generate(img):
         ims_i = []
         im = plt.imshow(img, cmap='gray')
@@ -33,11 +32,13 @@ def save_ani(img_list, filename='a.gif', fps=60):
 
 
 def show_gray(img):
+    import matplotlib.pyplot as plt
     plt.imshow(img, cmap='gray')
     plt.show()
 
 
 def show_hsi(hsi, band=20):
+    import matplotlib.pyplot as plt
     img = hsi[:, :, band]
     plt.imshow(img, cmap='gray')
     plt.show()
