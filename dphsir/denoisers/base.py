@@ -6,7 +6,7 @@ class Denoiser:
     def denoise(self, x, sigma):
         raise NotImplementedError
 
-    def __call__(self, x, sigma, iter):
+    def __call__(self, x, sigma, iter=None):
         return self.denoise(x, sigma)
 
 
