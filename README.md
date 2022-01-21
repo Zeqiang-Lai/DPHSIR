@@ -39,4 +39,4 @@ If you find our work useful for your research, please consider citing our paper 
 
 ## Acknowledgement
 
-- We use some util code from [DPIR](https://github.com/cszn/DPIR).
+- We use some code from [DPIR](https://github.com/cszn/DPIR).

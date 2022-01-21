@@ -225,7 +225,7 @@ class QRNN3DDenoiser(Denoiser):
         return self
 
 
-class UNetDenoiser(Denoiser):
+class GRUNetDenoiser(Denoiser):
     def __init__(self, model_path):
         from .models.qrnn3d import unet_masked_nobn
         model = unet_masked_nobn()
@@ -254,7 +254,7 @@ class UNetDenoiser(Denoiser):
         return self
 
 
-class UNetTVDenoiser(UNetDenoiser):
+class UNetTVDenoiser(GRUNetDenoiser):
     def __init__(self, model_path):
         super().__init__(model_path)
         self.tv_denoiser = TVDenoiser()

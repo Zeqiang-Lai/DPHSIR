@@ -1,6 +1,6 @@
 import torch
 from dphsir.degrades import GaussianNoise
-from dphsir.denoisers import  UNetDenoiser
+from dphsir.denoisers import  GRUNetDenoiser
 from dphsir.metric import mpsnr
 from dphsir.solvers.utils import single2tensor4, tensor2single
 from dphsir.utils.io import loadmat
@@ -17,7 +17,7 @@ low = awgn(gt)
 
 device = torch.device('cuda:0')
 model_path = 'unet_qrnn3d.pth'
-denoiser = UNetDenoiser(model_path).to(device)
+denoiser = GRUNetDenoiser(model_path).to(device)
 
 tmp = single2tensor4(low).to(device)
 pred = denoiser(tmp, sigma)

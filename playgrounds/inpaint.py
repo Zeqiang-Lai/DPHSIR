@@ -3,7 +3,7 @@ from functools import partial
 import dphsir.solvers.fns.inpaint as task
 import torch
 from dphsir.degrades.inpaint import FastHyStripe
-from dphsir.denoisers.wrapper import UNetDenoiser
+from dphsir.denoisers.wrapper import GRUNetDenoiser
 from dphsir.solvers import callbacks
 from dphsir.solvers.base import ADMMSolver
 from dphsir.solvers.params import admm_log_descent
@@ -21,7 +21,7 @@ mask = mask.astype('float')
 device = torch.device('cuda:0')
 
 model_path = 'unet_qrnn3d.pth'
-denoiser = UNetDenoiser(model_path).to(device)
+denoiser = GRUNetDenoiser(model_path).to(device)
 
 init = partial(task.inits.none, mask=mask)
 prox = task.Prox(mask).to(device)

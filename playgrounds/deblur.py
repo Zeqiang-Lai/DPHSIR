@@ -3,7 +3,7 @@ from functools import partial
 import dphsir.solvers.fns.sisr as sisr
 import torch
 from dphsir.degrades import GaussianBlur
-from dphsir.denoisers import Augment, UNetDenoiser
+from dphsir.denoisers import Augment, GRUNetDenoiser
 from dphsir.metric import mpsnr
 from dphsir.solvers import callbacks, ADMMSolver
 from dphsir.solvers.params import admm_log_descent
@@ -29,7 +29,7 @@ device = torch.device('cuda:0')
 
 # Create denoiser
 model_path = 'unet_qrnn3d.pth'
-denoiser = UNetDenoiser(model_path).to(device)
+denoiser = GRUNetDenoiser(model_path).to(device)
 denoiser = Augment(denoiser)
 
 # Create solver

@@ -5,7 +5,7 @@ import dphsir.solvers.fns.sisr as sisr
 import torch
 from dphsir.degrades import (HSI2RGB, BiCubicDownsample, ClassicalDownsample,
                              GaussianDownsample, UniformDownsample)
-from dphsir.denoisers.wrapper import UNetDenoiser
+from dphsir.denoisers.wrapper import GRUNetDenoiser
 from dphsir.solvers import callbacks
 from dphsir.solvers.params import admm_log_descent
 from dphsir.utils.io import loadmat
@@ -23,7 +23,7 @@ rgb = spe_down(gt)
 
 device = torch.device('cuda:0')
 model_path = 'unet_qrnn3d.pth'
-denoiser = UNetDenoiser(model_path).to(device)
+denoiser = GRUNetDenoiser(model_path).to(device)
 
 init = partial(sisr.inits.interpolate, sf=sf, enable_shift_pixel=True)
 prox_spa = sisr.proxs.CloseFormedADMM(spa_down.kernel(), sf=sf).to(device)
