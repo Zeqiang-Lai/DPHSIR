@@ -200,7 +200,7 @@ class DRUNetDenoiser(Denoiser2D):
 
 class QRNN3DDenoiser(Denoiser):
     def __init__(self, model_path, use_noise_map=True):
-        from .models.qrnn3d import qrnn3d, qrnn3d_masked
+        from .models.qrnn import qrnn3d, qrnn3d_masked
         model = qrnn3d_masked() if use_noise_map else qrnn3d()
         checkpoint = torch.load(model_path)
         model.load_state_dict(checkpoint['net'])
@@ -227,8 +227,8 @@ class QRNN3DDenoiser(Denoiser):
 
 class GRUNetDenoiser(Denoiser):
     def __init__(self, model_path):
-        from .models.qrnn3d import unet_masked_nobn
-        model = unet_masked_nobn()
+        from .models.qrnn import grunet_masked_nobn
+        model = grunet_masked_nobn()
         checkpoint = torch.load(model_path)
         model.load_state_dict(checkpoint['net'])
         model.eval()

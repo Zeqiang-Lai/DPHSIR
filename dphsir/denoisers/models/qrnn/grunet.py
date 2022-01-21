@@ -3,7 +3,7 @@ import torch.nn.functional as F
 import torch.utils.data
 import torch
 
-from .qrnn3d import QRNNConv3D, QRNNUpsampleConv3d, BiQRNNConv3D, BiQRNNDeConv3D, QRNNDeConv3D
+from .layer import QRNNConv3D, QRNNUpsampleConv3d, BiQRNNConv3D, BiQRNNDeConv3D, QRNNDeConv3D
 
 class conv_block(nn.Module):
     def __init__(self, in_ch, out_ch, bn=True):
@@ -31,9 +31,9 @@ class deconv_block(nn.Module):
         x = residual + self.conv_residual(x, reverse=reverse)
         return x
 
-class U_Net(nn.Module):
+class GRUnet(nn.Module):
     def __init__(self, in_ch=1, out_ch=1, use_noise_map=False, bn=True):
-        super(U_Net, self).__init__()
+        super(GRUnet, self).__init__()
         self.use_2dconv = False
         self.bandwise = False
         self.use_noise_map = use_noise_map

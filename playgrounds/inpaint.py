@@ -8,7 +8,7 @@ from dphsir.solvers import callbacks
 from dphsir.solvers.base import ADMMSolver
 from dphsir.solvers.params import admm_log_descent
 from dphsir.utils.io import loadmat
-from torchlight.metrics import mpsnr
+from dphsir.metrics import mpsnr
 
 path = 'Lehavim_0910-1717.mat'
 data = loadmat(path)

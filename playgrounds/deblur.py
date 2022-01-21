@@ -4,7 +4,7 @@ import dphsir.solvers.fns.sisr as sisr
 import torch
 from dphsir.degrades import GaussianBlur
 from dphsir.denoisers import Augment, GRUNetDenoiser
-from dphsir.metric import mpsnr
+from dphsir.metrics import mpsnr
 from dphsir.solvers import callbacks, ADMMSolver
 from dphsir.solvers.params import admm_log_descent
 from dphsir.utils.io import loadmat

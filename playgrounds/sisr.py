@@ -5,7 +5,7 @@ import torch
 from dphsir.degrades import (BiCubicDownsample, ClassicalDownsample,
                              GaussianDownsample, UniformDownsample)
 from dphsir.denoisers import Augment, GRUNetDenoiser
-from dphsir.metric import mpsnr
+from dphsir.metrics import mpsnr
 from dphsir.solvers import callbacks
 from dphsir.solvers.base import ADMMSolver
 from dphsir.solvers.params import admm_log_descent

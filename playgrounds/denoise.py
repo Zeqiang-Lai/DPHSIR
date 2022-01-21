@@ -1,7 +1,7 @@
 import torch
 from dphsir.degrades import GaussianNoise
 from dphsir.denoisers import  GRUNetDenoiser
-from dphsir.metric import mpsnr
+from dphsir.metrics import mpsnr
 from dphsir.solvers.utils import single2tensor4, tensor2single
 from dphsir.utils.io import loadmat
 

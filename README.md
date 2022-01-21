@@ -8,11 +8,13 @@ Zeqiang Lai, Kaixuan Wei, Ying Fu
 
 ## :sparkles: News
 
--
+- **In Progress**: Release training code of GRUNet.
+- **In Progress**: Add a command line client for testing single image or list of images in folders.
+- **2021-01-21**: Release demo code for each task.
 
 ## Requirement
 
-- Pytorch <= 1.7
+- Pytorch >= 1.8
 
 ## Getting Started
 

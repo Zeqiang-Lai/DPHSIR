@@ -11,7 +11,7 @@ from ..utils.ani import save_ani
 
 from .degrades.general import AbstractDownsample, AffineTransform, GaussianNoise, HSI2RGB, PerspectiveTransform
 from .solver import DenoiseSolver, InpaintingADMMPnPSolver, MISRADMMPnPSolver, PnPSISRSolver, CompressSensingADMMPnPSolver
-from .metric import psnr_b_max, ssim_qrnn3d,sam_qrnn3d, pnsr_qrnn3d
+from .metrics import psnr_b_max, ssim_qrnn3d,sam_qrnn3d, pnsr_qrnn3d
 
 """
 There are two types of dataset, all in [W,H,C] format

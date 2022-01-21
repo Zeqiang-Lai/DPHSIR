@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional
-from ..sync_batchnorm import SynchronizedBatchNorm2d, SynchronizedBatchNorm3d
+from .sync_batchnorm import SynchronizedBatchNorm2d, SynchronizedBatchNorm3d
 
 BatchNorm3d = SynchronizedBatchNorm3d
 

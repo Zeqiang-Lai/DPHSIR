@@ -6,11 +6,11 @@ import numpy as np
 from functools import partial
 
 if __name__ == '__main__':
-    from combinations import *
+    from .conv import *
     from utils import *
 else:
-    from .combinations import *
-    from .utils import *
+    from .conv import *
+    from .qrnn3d import *
 
 """F pooling"""
 
