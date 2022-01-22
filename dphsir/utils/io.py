@@ -42,3 +42,4 @@ def show_hsi(hsi, band=20):
     img = hsi[:, :, band]
     plt.imshow(img, cmap='gray')
     plt.show()
+

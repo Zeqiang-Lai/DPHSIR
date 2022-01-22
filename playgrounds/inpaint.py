@@ -1,7 +1,8 @@
 from functools import partial
 
-import dphsir.solvers.fns.inpaint as task
 import torch
+
+import dphsir.solvers.fns.inpaint as task
 from dphsir.degrades.inpaint import FastHyStripe
 from dphsir.denoisers.wrapper import GRUNetDenoiser
 from dphsir.solvers import callbacks

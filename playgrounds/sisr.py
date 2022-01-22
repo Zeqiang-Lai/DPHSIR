@@ -1,9 +1,9 @@
 from functools import partial
 
-import dphsir.solvers.fns.sisr as sisr
 import torch
-from dphsir.degrades import (BiCubicDownsample, ClassicalDownsample,
-                             GaussianDownsample, UniformDownsample)
+
+import dphsir.solvers.fns.sisr as sisr
+from dphsir.degrades import (BiCubicDownsample, GaussianDownsample, UniformDownsample)
 from dphsir.denoisers import Augment, GRUNetDenoiser
 from dphsir.metrics import mpsnr
 from dphsir.solvers import callbacks
@@ -20,7 +20,7 @@ data = loadmat(path)
 gt = data['gt']
 
 sf = 2
-downsample = ClassicalDownsample(sf=sf, type=0)
+downsample = GaussianDownsample(sf=sf)
 low = downsample(gt)
 
 # ------------------------------------- #
@@ -36,7 +36,7 @@ denoiser = Augment(denoiser)
 
 # Create solver
 init = partial(sisr.inits.interpolate, sf=sf, enable_shift_pixel=True)
-prox = sisr.proxs.CloseFormedADMM(downsample.kernel(), sf=sf).to(device)
+prox = sisr.proxs.CloseFormedADMM(downsample.kernel, sf=sf).to(device)
 denoise = denoiser
 solver = ADMMSolver(init, prox, denoise).to(device)
 

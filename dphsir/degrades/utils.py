@@ -19,22 +19,6 @@ def fspecial_gaussian(hsize, sigma):
     return h
 
 
-def classical_degradation(x, k, sf=3):
-    ''' blur + downsampling
-
-    Args:
-        x: HxWxC image, [0, 1]/[0, 255]
-        k: hxw, double, positive
-        sf: down-scale factor
-
-    Return:
-        downsampled LR image
-    '''
-    x = ndimage.filters.convolve(x, np.expand_dims(k, axis=2), mode='wrap')
-    st = 0
-    return x[st::sf, st::sf, ...]
-
-
 '''
 # =======================================
 # pytorch version of matlab imresize

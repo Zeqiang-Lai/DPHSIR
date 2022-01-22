@@ -1,7 +1,8 @@
 from functools import partial
 
-import dphsir.solvers.fns.cs as cs
 import torch
+
+import dphsir.solvers.fns.cs as cs
 from dphsir import degrades
 from dphsir.denoisers.wrapper import GRUNetDenoiser
 from dphsir.solvers import callbacks

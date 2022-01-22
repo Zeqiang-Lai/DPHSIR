@@ -1,7 +1,6 @@
-from functools import partial
-
-import dphsir.solvers.fns.sisr as sisr
 import torch
+
+import dphsir.solvers.fns.deblur as deblur
 from dphsir.degrades import GaussianBlur
 from dphsir.denoisers import Augment, GRUNetDenoiser
 from dphsir.metrics import mpsnr
@@ -17,9 +16,8 @@ path = 'Lehavim_0910-1717.mat'
 data = loadmat(path)
 gt = data['gt']
 
-sf = 1
-downsample = GaussianBlur()
-low = downsample(gt)
+blur = GaussianBlur()
+low = blur(gt)
 
 # ------------------------------------- #
 #                Init                   #
@@ -33,8 +31,8 @@ denoiser = GRUNetDenoiser(model_path).to(device)
 denoiser = Augment(denoiser)
 
 # Create solver
-init = partial(sisr.inits.interpolate, sf=sf, enable_shift_pixel=True)
-prox = sisr.proxs.CloseFormedADMM(downsample.kernel(), sf=sf).to(device)
+init = deblur.inits.interpolate
+prox = deblur.proxs.CloseFormedADMM(blur.kernel).to(device)
 denoise = denoiser
 solver = ADMMSolver(init, prox, denoise).to(device)
 

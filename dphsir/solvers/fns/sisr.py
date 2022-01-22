@@ -106,7 +106,7 @@ def upsample(x, sf=3):
 #                         Get Initial Solution for SISR                        #
 # ---------------------------------------------------------------------------- #
 
-def interpolate(img_L, sf, mode='cubic', enable_shift_pixel=False):
+def interpolate(img_L, sf, mode='cubic', enable_shift_pixel=True):
     import cv2
     mode_map = {
         'nearest': cv2.INTER_NEAREST,
