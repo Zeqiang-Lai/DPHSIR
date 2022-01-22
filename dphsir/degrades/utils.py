@@ -2,7 +2,6 @@ import numpy as np
 import scipy
 import torch
 import math
-from scipy import ndimage
 
 
 def fspecial_gaussian(hsize, sigma):

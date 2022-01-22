@@ -1,1 +1,9 @@
 click
+munch
+pyyaml
+numpy
+matplotlib
+scikit-image
+scipy
+cvxpy
+hdf5storage
