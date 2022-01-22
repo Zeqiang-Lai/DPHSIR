@@ -23,6 +23,9 @@ class sequence(ParamProvider):
     def __call__(self, idx, **context):
         return self.data[idx]
 
+    def __len__(self):
+        return len(self.data)
+
 
 def admm_log_descent(sigma=2.55/255, iter_num=15, modelSigma1=49.0, modelSigma2=2.55, w=1.0, lam=0.23):
     '''

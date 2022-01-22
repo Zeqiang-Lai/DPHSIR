@@ -46,7 +46,10 @@ class SpeProx:
 
 
 class ADMMSolver(PnPSolver):
-    def __init__(self, init, prox_spe, prox_spa, denoise):
+    def __init__(self, init, prox, denoise):
+        """ prox: (prox_spe, prox_spa)
+        """
+        prox_spe, prox_spa = prox
         super().__init__(init, prox_spa, denoise)
         self.prox_spe = prox_spe
         self.prox_spa = prox_spa
@@ -84,7 +87,7 @@ class ADMMSolver(PnPSolver):
             # u update
             u = u + x - v
             m = m + x - w
-            
+
             context.update({'iter': i, 'total': iter_num})
             call(callbacks, **context)
 

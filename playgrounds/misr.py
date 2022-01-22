@@ -29,7 +29,7 @@ init = partial(sisr.inits.interpolate, sf=sf, enable_shift_pixel=True)
 prox_spa = sisr.proxs.CloseFormedADMM(spa_down.kernel, sf=sf).to(device)
 prox_spe = misr.SpeProx(spe_down.srf).to(device)
 denoise = denoiser
-solver = misr.ADMMSolver(init, prox_spe, prox_spa, denoise).to(device)
+solver = misr.ADMMSolver(init, (prox_spe, prox_spa), denoise).to(device)
 
 rhos, sigmas = admm_log_descent(sigma=max(0.255/255., 0),
                                 iter_num=24,

@@ -1,6 +1,6 @@
-from .wrapper import (TVDenoiser, DeepTVDenoiser, 
+from .wrapper import (TVDenoiser, 
                       FFDNet3DDenoiser, FFDNetDenoiser, 
                       IRCNNDenoiser, DRUNetDenoiser, 
-                      QRNN3DDenoiser, GRUNetDenoiser, UNetTVDenoiser)
+                      QRNN3DDenoiser, GRUNetDenoiser, GRUNetTVDenoiser)
 
-from .tricks import Augment
+from .composite import Augment, DeepTVDenoiser
