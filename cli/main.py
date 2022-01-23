@@ -17,7 +17,7 @@ def add_options(options):
 @click.option('-i', '--input_path', required=True, help='Path to input image/directory.')
 @click.option('-o', '--output_path', default='tmp', help='Path to output image/directory.')
 @click.option('-d', '--denoiser', default='grunet', help='Denoiser type.')
-@click.option('-dp', '--denoiser_path', default='grunet.pth', help='Path to denoiser model.')
+@click.option('-dp', '--denoiser_path', default='models/grunet.pth', help='Path to denoiser model.')
 @click.option('-s', '--solver', type=click.Choice(['admm', 'hqs']), default='admm', help='Solver type.')
 @click.option('--device', default='cuda', help='Device to use.')
 @click.pass_context
