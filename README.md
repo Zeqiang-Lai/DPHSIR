@@ -1,14 +1,13 @@
 # DPHSIR
 
-[Paper]() | [Pretrained Model]()
+[Paper](https://authors.elsevier.com/c/1eXbP_L2OtrGu9) | [Pretrained Model](https://1drv.ms/u/s!AomvdxwcLmYImDiK2NiIkn_LjsOa?e=PPfex2)
 
 **Deep Plug-and-Play Prior for Hyperspectral Image Restoration (Neurocomputing 2022)**
 
-Zeqiang Lai, Kaixuan Wei, Ying Fu
+Zeqiang Lai, [Kaixuan Wei](https://github.com/Vandermode), [Ying Fu](https://ying-fu.github.io/)
 
 ## :sparkles: News
 
-- **In Progress**: Release training code of GRUNet.
 - **2021-01-22**: Add a command line client for testing single image or list of images in folders.
 - **2021-01-21**: Release demo code for each task.
 
@@ -31,6 +30,8 @@ pip install -r requirements.txt
 
 ```shell
 git clone https://github.com/Zeqiang-Lai/DPHSIR.git
+cd DPHSIR
+pip install -e .
 ```
 
 3. **Run cli or playgrounds**
@@ -47,18 +48,19 @@ python playgrounds/deblur.py
 If you find our work useful for your research, please consider citing our paper :)
 
 ```bibtex
-@article{lai2022deep,
-  title={Deep Plug-and-Play Prior for Hyperspectral Image Restoration},
-  author={Lai, Zeqiang and Wei, Kaixuan and Fu, Ying},
-  journal={Neurocomputing},
-  volume={},
-  number={},
-  pages={},
-  year={2022},
-  publisher={Elsevier}
+@article{LAI2022281,
+title = {Deep plug-and-play prior for hyperspectral image restoration},
+journal = {Neurocomputing},
+volume = {481},
+pages = {281-293},
+year = {2022},
+issn = {0925-2312},
+doi = {https://doi.org/10.1016/j.neucom.2022.01.057},
+author = {Zeqiang Lai and Kaixuan Wei and Ying Fu},
 }
 ```
 
 ## Acknowledgement
 
 - We use some code from [DPIR](https://github.com/cszn/DPIR).
+- The training code of GRUNet is [QRNN3D](https://github.com/Vandermode/QRNN3D)
