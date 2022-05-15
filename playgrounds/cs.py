@@ -20,7 +20,7 @@ low = degrade(gt)
 mask = degrade.mask
 
 device = torch.device('cuda:0')
-model_path = 'unet_qrnn3d.pth'
+model_path = 'grunet.pth'
 denoiser = GRUNetDenoiser(model_path).to(device)
 
 init = partial(cs.init, mask=mask)

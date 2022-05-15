@@ -22,7 +22,7 @@ low = spa_down(gt)
 rgb = spe_down(gt)
 
 device = torch.device('cuda:0')
-model_path = 'unet_qrnn3d.pth'
+model_path = 'grunet.pth'
 denoiser = GRUNetDenoiser(model_path).to(device)
 
 init = partial(sisr.inits.interpolate, sf=sf, enable_shift_pixel=True)

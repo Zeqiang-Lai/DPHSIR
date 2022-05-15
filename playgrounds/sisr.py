@@ -30,7 +30,7 @@ low = downsample(gt)
 device = torch.device('cuda:0')
 
 # Create denoiser
-model_path = 'unet_qrnn3d.pth'
+model_path = 'grunet.pth'
 denoiser = GRUNetDenoiser(model_path).to(device)
 denoiser = Augment(denoiser)
 
