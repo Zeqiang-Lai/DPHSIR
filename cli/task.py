@@ -87,7 +87,7 @@ if __name__ == '__main__':
         'output_path': 'Lehavim_0910-1717_deblur',
         'denoiser': {
             'type': 'grunet',
-            'model_path': 'playgrounds/unet_qrnn3d.pth',
+            'model_path': 'playgrounds/grunet.pth',
         },
         'solver': 'admm',
         'device': 'cuda',

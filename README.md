@@ -37,6 +37,7 @@ pip install -e .
 3. **Run cli or playgrounds**
 
 - Download the [sample input](https://1drv.ms/u/s!AomvdxwcLmYImEc-Yfj2B2FBGEb0?e=vShXe9) if you don't have one.
+- Download the [pretrained model](https://1drv.ms/u/s!AomvdxwcLmYImDiK2NiIkn_LjsOa?e=PPfex2), `grunet.pth`, put it in `playgrounds/grunet.pth`.
 
 ```shell
 # run cli
