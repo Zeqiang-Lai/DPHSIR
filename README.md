@@ -8,27 +8,23 @@ Zeqiang Lai, [Kaixuan Wei](https://github.com/Vandermode), [Ying Fu](https://yin
 
 <img src="algorithm.png" width="350" />
 
-## :sparkles: News
+## News :sparkles:
 
 - **2021-01-22**: Add a command line client for testing single image or list of images in folders.
 - **2021-01-21**: Release demo code for each task.
 
-## Requirement
-
-- Pytorch >= 1.8
-- OpenCV
-
-## Getting Started
+## Usages
 
 1.  **Install the requirments**
 
 ```shell
-conda install -c conda-forge opencv
+# Pytorch >= 1.8
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+conda install -c conda-forge opencv
 pip install -r requirements.txt
 ```
 
-2. **Clone the repo**
+1. **Clone the repo**
 
 ```shell
 git clone https://github.com/Zeqiang-Lai/DPHSIR.git
@@ -54,14 +50,14 @@ If you find our work useful for your research, please consider citing our paper 
 
 ```bibtex
 @article{LAI2022281,
-title = {Deep plug-and-play prior for hyperspectral image restoration},
-journal = {Neurocomputing},
-volume = {481},
-pages = {281-293},
-year = {2022},
-issn = {0925-2312},
-doi = {https://doi.org/10.1016/j.neucom.2022.01.057},
-author = {Zeqiang Lai and Kaixuan Wei and Ying Fu},
+    title = {Deep plug-and-play prior for hyperspectral image restoration},
+    journal = {Neurocomputing},
+    volume = {481},
+    pages = {281-293},
+    year = {2022},
+    issn = {0925-2312},
+    doi = {https://doi.org/10.1016/j.neucom.2022.01.057},
+    author = {Zeqiang Lai and Kaixuan Wei and Ying Fu},
 }
 ```
 
