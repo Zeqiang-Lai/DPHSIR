@@ -6,6 +6,8 @@
 
 Zeqiang Lai, [Kaixuan Wei](https://github.com/Vandermode), [Ying Fu](https://ying-fu.github.io/)
 
+<img src="algorithm.png" width="350" />
+
 ## :sparkles: News
 
 - **2021-01-22**: Add a command line client for testing single image or list of images in folders.
