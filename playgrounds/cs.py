@@ -1,6 +1,8 @@
 from functools import partial
 
 import torch
+import imageio
+import numpy as np
 
 import dphsir.solvers.fns.cs as cs
 from dphsir import degrades
@@ -33,8 +35,13 @@ rhos, sigmas = admm_log_descent(sigma=max(0.255/255., 0),
                                 modelSigma1=50, modelSigma2=45,
                                 w=1)
 
+int = callbacks.GatherIntermediates(filter=lambda ctx: np.uint8(ctx['x'][0,20,:,:].cpu().numpy()*255))
+pbar = callbacks.ProgressBar(24)
+
 pred = solver.restore(low, iter_num=24, rhos=rhos, sigmas=sigmas,
-                      callbacks=[callbacks.ProgressBar(24)])
+                      callbacks=[pbar, int])
+
+imageio.mimsave('moive.mp4', int.intermediates, fps=5)
 
 print(pred.shape)
 print(mpsnr(init(low), gt))
