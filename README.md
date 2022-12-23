@@ -49,7 +49,7 @@ python playgrounds/deblur.py
 If you find our work useful for your research, please consider citing our paper :)
 
 ```bibtex
-@article{LAI2022281,
+@article{lai2022dphsir,
     title = {Deep plug-and-play prior for hyperspectral image restoration},
     journal = {Neurocomputing},
     volume = {481},
