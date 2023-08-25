@@ -24,7 +24,7 @@ conda install -c conda-forge opencv
 pip install -r requirements.txt
 ```
 
-1. **Clone the repo**
+2.  **Clone the repo**
 
 ```shell
 git clone https://github.com/Zeqiang-Lai/DPHSIR.git
