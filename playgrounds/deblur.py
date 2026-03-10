@@ -63,5 +63,5 @@ import matplotlib.pyplot as plt
 import numpy as np
 img = [i[:,:,20] for i in [init(low), pred, gt]]
 plt.imshow(np.hstack(img))
-plt.show()
+plt.savefig('output_deblur.png')
 # Expect: 55.10
